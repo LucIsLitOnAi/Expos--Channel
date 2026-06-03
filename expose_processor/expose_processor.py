@@ -217,7 +217,7 @@ Exposé-Text: {expose_text}"""
     for versuch in range(3):
         try:
             response = client.messages.create(
-                model="claude-sonnet-4-20250514",
+                model="claude-sonnet-4-5",
                 max_tokens=2048,
                 messages=[{"role": "user", "content": user_prompt}],
                 system=system_prompt,
@@ -408,7 +408,7 @@ Antworte NUR als JSON:
     for versuch in range(3):
         try:
             response = client.messages.create(
-                model="claude-sonnet-4-20250514",
+                model="claude-sonnet-4-5",
                 max_tokens=1024,
                 messages=[{"role": "user", "content": user_prompt}],
                 system=system_prompt,
