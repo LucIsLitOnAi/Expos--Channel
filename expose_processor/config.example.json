@@ -1,0 +1,14 @@
+{
+  "anthropic_api_key": "HIER_EINTRAGEN",
+  "mitarbeiter_nr": "0",
+  "mitarbeiter_name": "Dein Name",
+  "email_absender": "deine@gmail.com",
+  "email_empfaenger": "deine@gmail.com",
+  "email_passwort": "GMAIL_APP_PASSWORT",
+  "google_drive_hauptordner_id": "ORDNER_ID_AUS_DRIVE_URL",
+  "google_credentials_pfad": "assets/google_service_account.json",
+  "template_pfad": "assets/templates/Projektierung_Template.docx",
+  "output_pfad": "output/Projektierungen/",
+  "log_pfad": "system/logs/stop_log.csv",
+  "drive_upload_aktiv": false
+}

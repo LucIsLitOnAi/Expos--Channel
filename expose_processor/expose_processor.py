@@ -561,6 +561,11 @@ def schritt7_drive_und_email(
 ) -> None:
     print("\n[Schritt 7] Google Drive Upload + E-Mail-Benachrichtigung …")
 
+    if not cfg.get("drive_upload_aktiv", True):
+        print("  [INFO] Drive-Upload deaktiviert — nur E-Mail.")
+        _sende_abschluss_email(cfg, daten, docx_dateien, {})
+        return
+
     credentials_path = cfg.get("google_credentials_pfad", "")
     hauptordner_id = cfg.get("google_drive_hauptordner_id", "")
 
