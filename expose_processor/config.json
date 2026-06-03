@@ -1,0 +1,13 @@
+{
+  "anthropic_api_key": "",
+  "mitarbeiter_nr": "0",
+  "mitarbeiter_name": "Timo Klemt",
+  "email_absender": "",
+  "email_empfaenger": "",
+  "email_passwort": "",
+  "google_drive_hauptordner_id": "",
+  "google_credentials_pfad": "assets/google_service_account.json",
+  "template_pfad": "assets/templates/Projektierung_Template.docx",
+  "output_pfad": "output/Projektierungen/",
+  "log_pfad": "system/logs/stop_log.csv"
+}
