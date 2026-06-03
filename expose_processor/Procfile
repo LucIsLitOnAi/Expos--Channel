@@ -1,1 +1,1 @@
-worker: python3.11 expose_processor/telegram_bot.py
+worker: python3.11 telegram_bot.py
