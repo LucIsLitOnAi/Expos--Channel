@@ -1,6 +1,3 @@
-from dotenv import load_dotenv
-load_dotenv()
-
 import logging
 import subprocess
 import os
@@ -10,9 +7,15 @@ from pathlib import Path
 from telegram import Update
 from telegram.ext import ApplicationBuilder, MessageHandler, filters, ContextTypes
 
+# Lokal .env laden falls vorhanden
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
+
 logging.basicConfig(level=logging.INFO)
 
-# Config aus Umgebungsvariablen erstellen
 def setup_config():
     config = {
         "anthropic_api_key": os.environ.get("ANTHROPIC_API_KEY", ""),
