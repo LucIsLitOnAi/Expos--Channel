@@ -274,8 +274,8 @@ def schritt3_gates(daten: dict) -> float:
         raise StopSignal("GATE1_PREIS", f"{kaufpreis:.0f}€ > 350.000€")
 
     # GATE 2
-    if not (400 <= grundstuecksflaeche <= 1000):
-        raise StopSignal("GATE2_GROESSE", f"{grundstuecksflaeche:.0f}m²")
+    if grundstuecksflaeche < 450:
+        raise StopSignal("GATE2_GROESSE", f"{grundstuecksflaeche:.0f}m² < 450m²")
 
     # GATE 3
     if bebaubare_flaeche < 50:
@@ -284,8 +284,7 @@ def schritt3_gates(daten: dict) -> float:
     # GATE 4
     if abriss is True or str(abriss).lower() == "true":
         raise StopSignal("GATE4_ABRISS", "Abriss/Abbruch erforderlich")
-    if laube is True or str(laube).lower() == "true":
-        raise StopSignal("GATE4_LAUBE", "Manuelle Prüfung erforderlich (Gartenlaube)")
+    # Gartenlaube: kein STOP (Abriss erlaubt)
 
     # GATE 5
     erschlossen_str = str(erschlossen).lower()
