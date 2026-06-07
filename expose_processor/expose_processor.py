@@ -10,7 +10,7 @@ import json
 import os
 import re
 import shutil
-import smtplib
+import resend as _resend
 import sys
 import traceback
 from datetime import datetime
@@ -124,14 +124,17 @@ def send_email(cfg: dict, subject: str, body: str) -> None:
         print("[WARN] E-Mail-Konfiguration unvollständig — E-Mail wird nicht gesendet.")
         return
     try:
-        msg = MIMEMultipart("alternative")
-        msg["Subject"] = subject
-        msg["From"] = absender
-        msg["To"] = empfaenger
-        msg.attach(MIMEText(body, "plain", "utf-8"))
-        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
-            server.login(absender, passwort)
-            server.sendmail(absender, empfaenger, msg.as_string())
+        api_key = os.environ.get("RESEND_API_KEY", cfg.get("resend_api_key", ""))
+        if not api_key:
+            print("[WARN] RESEND_API_KEY fehlt — E-Mail wird nicht gesendet.")
+            return
+        _resend.api_key = api_key
+        _resend.Emails.send({
+            "from": "Timmo-Immo-Pipeline <onboarding@resend.dev>",
+            "to": empfaenger,
+            "subject": subject,
+            "text": body,
+        })
         print(f"[EMAIL] Gesendet: {subject}")
     except Exception as e:
         print(f"[WARN] E-Mail-Versand fehlgeschlagen: {e}")
