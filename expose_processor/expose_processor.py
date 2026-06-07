@@ -261,8 +261,8 @@ def schritt3_gates(daten: dict) -> float:
     erschlossen = daten.get("erschlossen", False)
 
     # GRZ mit Fallback
-    if grz_roh is None:
-        print("  [WARN] GRZ nicht gefunden — Fallback 0.3 wird verwendet.")
+    if grz_roh is None or float(grz_roh) == 0.0:
+        print("  [WARN] GRZ nicht gefunden oder 0.0 — Fallback 0.3 wird verwendet.")
         grz = 0.3
     else:
         grz = float(grz_roh)
